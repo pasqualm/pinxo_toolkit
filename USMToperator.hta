@@ -1,0 +1,95 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>USMT operator</title>
+
+<HTA:APPLICATION 
+     ID="USMToperator"
+     APPLICATIONNAME="USMT operator"
+     SCROLL="auto"
+     SINGLEINSTANCE="yes"
+>
+</head>
+
+<SCRIPT Language="VBScript">
+Sub Window_Onload
+	self.focus
+	self.resizeTo 620,450
+	 
+    storepath.Value="\\SSD091585.generalitat.gva.es\Captures$"
+
+	Set objSysInfo = CreateObject( "WinNTSystemInfo" )
+	strComputerName = objSysInfo.ComputerName
+	storedir.Value=strComputerName
+End Sub
+
+Sub RunOperations
+	if left(storepath.value,2) = "\\" and (usuari.value = "" or password.value = "") then
+		alert("Si es gasta una ubicació de xarxa per a operar s'ha d'especificar un usuari i password de connexió. Emplene aquestes dades")
+		exit sub
+	end if
+	
+	run_button.Disabled = True
+	args="-user """ & usuari.value & """ -password """ & password.value & """ -storepath """ & storepath.value & """ -storedir """ & storedir.value & """"
+	if overwrite.checked then
+		args=args & " -overwrite "
+	end if 
+	If operation(1).Checked Then
+		args=args & " -operation restore"
+	else
+		args=args & " -operation capture"
+	end if   
+	
+	'detectem la versio de sistema operatiu per veure si llancem l'execucio fent que bote l'uac o no
+	Set shell = CreateObject("WScript.Shell")
+	Set getOSVersion = shell.exec("%comspec% /c ver")
+	version = getOSVersion.stdout.readall
+	Select Case True
+	   Case InStr(version, "n 5.") > 1 : GetOS = "XP"
+	   Case InStr(version, "n 6.") > 1 : GetOS = "Vista"
+	   Case Else : GetOS = "Unknown"
+	End Select
+
+	Set objShell = CreateObject("Shell.Application")
+	if GetOS = "XP" then
+		objShell.ShellExecute "cmd", "/c """"" & shell.CurrentDirectory & "\USMTWrapper_DGTI_USMT5.cmd"" " & args & " "" ", "", "open", 1
+	else
+		objShell.ShellExecute "cmd", "/c """"" & shell.CurrentDirectory & "\USMTWrapper_DGTI_USMT5.cmd"" " & args & " "" ", "", "runas", 1
+	end if
+	self.close
+End Sub
+
+Sub habilitaOverrite
+    overwrite.Disabled = False
+End Sub
+
+Sub deshabilitaOverrite
+    overwrite.Disabled = True
+End Sub
+
+</SCRIPT>
+<body bgcolor="LightGray">
+<span id=DataArea><b>Indique l'operació que vol efectuar:</b></span> <br />
+<input type="radio" name="operation" value="1" checked onClick="habilitaOverrite">Capturar dades amb USMT <br />
+<input type="radio" name="operation" value="2" onClick="deshabilitaOverrite">Restaurar dades amb USMT <br />
+<br />
+
+<span id=DataArea><b>Indica l'ubicació local o de xarxa sobre la que es deixaran o carregaran les dades:</b></span> <br />
+<input type="text" name="storepath" size="60"> <br />
+<br />
+
+<span id=DataArea><b>Indica el nom del directori final on queden les dades d'aquesta màquina:</b></span> <br />
+<input type="text" name="storedir" size="30"> <br />
+<br />
+
+<input type="checkbox"name="overwrite"value="1"> Sobreescriure perfil de dades si ja existia<br />
+<br />
+
+<span id=DataArea><b>Indica l'usuari TD del domini generalitat que gastaràs per fer les operacions contra la xarxa:</b></span> <br />
+Usuari:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="usuari" size="30">  (TDxxxxxxxx)<br />
+Password:&nbsp;<input type="password" name="password" size="31"> <br />
+<br />
+
+<input id=runbutton  class="button" type="button" value="Executa l'operació" name="run_button" onClick="RunOperations">
+</body>
+</html>

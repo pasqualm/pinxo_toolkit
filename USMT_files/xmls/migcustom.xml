@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migration urlid="http://www.microsoft.com/migration/1.0/migxmlext/migcustom">
+
+	<_locDefinition>
+		<_locDefault _loc="locNone"/>
+		<_locTag _loc="locData">displayName</_locTag>
+	</_locDefinition>
+	<namedElements>
+		<!-- Global -->
+		<environment name="GlobalEnvX64">
+		  <conditions>
+			<condition>MigXmlHelper.IsNative64Bit()</condition>
+		  </conditions>
+		  <variable name="HklmWowSoftware">
+			<text>HKLM\SOFTWARE\Wow6432Node</text>
+		  </variable>
+		  <variable name="ProgramFiles32bit">
+			<text>%ProgramFiles(x86)%</text>
+		  </variable>
+		  <variable name="CommonProgramFiles32bit">
+			<text>%CommonProgramFiles(x86)%</text>
+		  </variable>
+		</environment>
+		<environment name="GlobalEnv">
+		  <conditions>
+			<condition negation="Yes">MigXmlHelper.IsNative64Bit()</condition>
+		  </conditions>
+		  <variable name="HklmWowSoftware">
+			<text>HKLM\Software</text>
+		  </variable>
+		  <variable name="ProgramFiles32bit">
+			<text>%ProgramFiles%</text>
+		  </variable>
+		  <variable name="CommonProgramFiles32bit">
+			<text>%CommonProgramFiles%</text>
+		  </variable>
+		</environment>
+	</namedElements>
+
+	<!-- This component migrates user files with known extension-->
+	<component type="Documents" context="System">
+		<displayName _locID="miguser.userdata">User Data</displayName>
+		<role role="Data">
+			<rules>
+				<include>
+					<objectSet>
+						<!-- fitxers de libreoffice -->
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.odt]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ods]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.odp]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.odb]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ott]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ots]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.otp]", "Fixed")</script>						
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.odf]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.odm]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.odg]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.oth]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.otg]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sxw]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.stw]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sxg]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sxc]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.stc]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sxi]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sti]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sxd]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.std]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sxm]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.smf]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mml]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sdw]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sgl]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.vor]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.slk]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sdc]", "Fixed")</script>
+						<!-- oracle forms -->
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.fmb]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.fmx]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.prt]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.rdf]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.pld]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.pll]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.pkh]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.plb]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mmx]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mmb]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.sql]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.olb]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.eex]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.dis]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ogd]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.env]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.rpt]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.pls]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.pks]", "Fixed")</script>
+					</objectSet>
+				</include>
+
+				<exclude>
+					<objectSet>
+                        <pattern type="File">%PROFILESFOLDER%\* [*]</pattern>
+						<pattern type="File">%CSIDL_WINDOWS%\* [*]</pattern>
+						<pattern type="File">%CSIDL_PROGRAM_FILES%\* [*]</pattern>
+						<pattern type="File">%CSIDL_PROGRAM_FILESX86%\* [*]</pattern>
+						<pattern type="File">%CSIDL_COMMON_APPDATA%\* [*]</pattern>
+
+                        <script>MigXmlHelper.GenerateDrivePatterns ("\Archivos de programa\* [*]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("\Program Files\* [*]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("\Winnt\* [*]", "Fixed")</script>
+						<script>MigXmlHelper.GenerateDrivePatterns ("\Windows\* [*]", "Fixed")</script>
+					</objectSet>
+				</exclude>
+			</rules>
+		</role>
+	</component>
+
+	<!-- carpetes que s'incloeixen o s'excloeixen de la migracio-->
+	<component type="Documents" context="System">
+		<displayName _locID="miguser.sharedvideo">Test component</displayName>
+		<role role="Data">
+			<rules>
+				<include>
+					<objectSet>
+						<pattern type="File">C:\reset\* [*]</pattern>
+					</objectSet>
+				</include>
+				<exclude>
+					<objectSet>
+					</objectSet>
+				</exclude>  
+				<unconditionalExclude>
+					<objectSet>		 
+						<pattern type="File">c:\MININT\*[*]</pattern>
+						<pattern type="File">c:\quarantine\*[*]</pattern>
+						<pattern type="File">c:\orawin\*[*]</pattern>
+						<pattern type="File">c:\office2003\*[*]</pattern>
+						<pattern type="File">c:\herramientas administrativas\*[*]</pattern>
+						<pattern type="File">c:\perflogs\*[*]</pattern>
+						<pattern type="File">c:\aplifep\*[*]</pattern>
+						<pattern type="File">c:\office97\*[*]</pattern>
+						<pattern type="File">c:\dnie\*[*]</pattern>
+						<pattern type="File">c:\network associates\*[*]</pattern>
+						<pattern type="File">c:\human1\*[*]</pattern>
+						<pattern type="File">c:\vnc\*[*]</pattern>
+						<pattern type="File">c:\forms3\*[*]</pattern>
+						<pattern type="File">c:\ora_pde\*[*]</pattern>
+						<pattern type="File">c:\intel\*[*]</pattern>
+						<pattern type="File">c:\leader713\*[*]</pattern>
+						<pattern type="File">c:\salt\*[*]</pattern>
+						<pattern type="File">c:\fnmt-rcm\*[*]</pattern>
+						<pattern type="File">c:\ppro\*[*]</pattern>
+						<pattern type="File">c:\dgti.micro\*[*]</pattern>
+						<pattern type="File">c:\FreeOCR\*[*]</pattern>
+						<pattern type="File">c:\Windows\*[*]</pattern>
+					</objectSet> 
+				</unconditionalExclude>
+			</rules>
+		</role>
+	</component>
+
+	<!--This componant copies all the Mozilla Firefox profiles and copies them to the new Windows 7 load. Retaining all the settings and bookmarks -->
+	<!--NOTE: MOZILLA FIREFOX MUST BE INSTALLED PRIOR TO THIS RUNNING -->
+	<component context="UserAndSystem" type="Application">
+		<displayName _locID="MigUser.firefox">Mozilla Firefox</displayName>
+		<paths>
+			<path type="File">%CSIDL_APPDATA%\Mozilla\Firefox\</path>
+		</paths>
+		<role role="Settings">
+			<detection>
+				<conditions>
+					<condition>MigXmlHelper.DoesObjectExist("File","%CSIDL_APPDATA%\Mozilla\Firefox\* [*]")</condition>
+				</conditions>
+			</detection>
+			<rules context="User">
+				<include>
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Mozilla\Firefox\* [*]</pattern>
+					</objectSet>
+				</include>
+				<exclude>
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Mozilla\Firefox\Crash Reports\* [*]</pattern>
+						<pattern type="File">%CSIDL_APPDATA%\Mozilla\Firefox\Profiles\*\ [pluginreg.dat]</pattern>
+						<pattern type="File">%CSIDL_APPDATA%\Mozilla\Firefox\Profiles\*\extensions\* [*]</pattern>						
+					</objectSet>
+				</exclude>
+				<merge script="MigXmlHelper.SourcePriority()">
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Mozilla\Firefox\* [*]</pattern>
+					</objectSet>
+				</merge>
+			</rules>
+		</role>
+	</component> 	
+
+	<!-- migra el profile de Thunderbird  -->
+	<component context="UserAndSystem" type="Application">
+		<displayName _locID="MigUser.thunderbird">Thunderbird</displayName>
+		<paths>
+			<path type="File">%CSIDL_APPDATA%\Thunderbird\</path>
+		</paths>
+		<role role="Settings">
+			<detection>
+				<conditions>
+					<condition>MigXmlHelper.DoesObjectExist("File","%CSIDL_APPDATA%\Thunderbird\* [*]")</condition>
+				</conditions>
+			</detection>
+			<rules context="User">
+				<include>
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Thunderbird\* [*]</pattern>
+					</objectSet>
+				</include>
+				<exclude>
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Thunderbird\Crash Reports\* [*]</pattern>
+						<pattern type="File">%CSIDL_APPDATA%\Thunderbird\Profiles\*\ [pluginreg.dat]</pattern>
+						<pattern type="File">%CSIDL_APPDATA%\Thunderbird\Profiles\*\extensions\* [*]</pattern>						
+					</objectSet>
+				</exclude>
+				<merge script="MigXmlHelper.SourcePriority()">
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Thunderbird\* [*]</pattern>
+					</objectSet>
+				</merge>
+			</rules>
+		</role>
+	</component> 	
+
+	<!-- migra el profile de Libreoffice  -->
+	<component context="UserAndSystem" type="Application">
+		<displayName _locID="MigUser.Libreoffice">Libreoffice</displayName>
+		<paths>
+			<path type="File">%CSIDL_APPDATA%\Libreoffice\</path>
+		</paths>
+		<role role="Settings">
+			<detection>
+				<conditions>
+					<condition>MigXmlHelper.DoesObjectExist("File","%CSIDL_APPDATA%\Libreoffice\* [*]")</condition>
+				</conditions>
+			</detection>
+			<rules context="User">
+				<include>
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Libreoffice\* [*]</pattern>
+					</objectSet>
+				</include>
+				<merge script="MigXmlHelper.SourcePriority()">
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\Libreoffice\* [*]</pattern>
+					</objectSet>
+				</merge>
+			</rules>
+		</role>
+	</component> 	
+
+	<!-- migra el profile de vlc  -->
+	<component context="UserAndSystem" type="Application">
+		<displayName _locID="MigUser.vlc">vlc</displayName>
+		<paths>
+			<path type="File">%CSIDL_APPDATA%\vlc\</path>
+		</paths>
+		<role role="Settings">
+			<detection>
+				<conditions>
+					<condition>MigXmlHelper.DoesObjectExist("File","%CSIDL_APPDATA%\vlc\* [*]")</condition>
+				</conditions>
+			</detection>
+			<rules context="User">
+				<include>
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\vlc\* [*]</pattern>
+					</objectSet>
+				</include>
+				<merge script="MigXmlHelper.SourcePriority()">
+					<objectSet>
+						<pattern type="File">%CSIDL_APPDATA%\vlc\* [*]</pattern>
+					</objectSet>
+				</merge>
+			</rules>
+		</role>
+	</component> 	
+	
+	<!-- Google Chrome, tant en instalacio d'usuari com a system-wide  -->
+	<component context="UserAndSystem" type="Application">
+	<displayName _locID="MigUser.chrome_all">Google Chrome (todos)</displayName>
+	<environment name="GlobalEnv"/>
+	<environment name="GlobalEnvX64"/>
+	<role role="Settings">
+	  <destinationCleanup>
+		<objectSet>
+		  <pattern type="File">%CSIDL_LOCAL_APPDATA%\Google\Chrome\User Data\*\Cache\* [*]</pattern>
+		</objectSet>
+	  </destinationCleanup>
+	  <detection>
+		<conditions operation="OR">
+			<condition>MigXmlHelper.DoesObjectExist("File","%CSIDL_LOCAL_APPDATA%\Google\Chrome\Application [chrome.exe]")</condition>
+			<condition>MigXmlHelper.DoesObjectExist("Registry","HKLM\Software\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe [Path]")</condition>
+		</conditions>		
+	  </detection>
+	  <rules context="User">
+		<include>
+		  <objectSet>
+			<pattern type="File">%CSIDL_LOCAL_APPDATA%\Google\Chrome\User Data\* [*]</pattern>
+		  </objectSet>
+		</include>
+		<exclude>
+		  <objectSet>
+			<pattern type="File">%CSIDL_LOCAL_APPDATA%\Google\Chrome\User Data\*\Cache\* [*]</pattern>
+		  </objectSet>
+		</exclude>
+		<merge script="MigXmlHelper.SourcePriority()">
+		  <objectSet>
+			<pattern type="File">%CSIDL_LOCAL_APPDATA%\Google\Chrome\User Data\* [*]</pattern>
+		  </objectSet>
+		</merge>
+	  </rules>
+	</role>
+	</component>
+
+	<component context="UserAndSystem" type="Documents">
+        <displayName>Exclusiones</displayName>
+        <role role="Data">
+            <rules>
+             <unconditionalExclude>
+                        <objectSet>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mp3]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mid]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.midi]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.wma]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.cda]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ogg]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ogm]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.aac]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ac3]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.flac]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mp4]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.vob]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.iso]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.tmp]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mds]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.ccd]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.cue]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.btw]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.cdi]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.img]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.nrg]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.3gp]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.3gp2]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.m4a]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.m4v]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mov]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mpg]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mpeg4]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.avi]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.asf]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.wmv]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.f4v]", "Fixed")</script>
+							<script>MigXmlHelper.GenerateDrivePatterns ("* [*.mkv]", "Fixed")</script>
+                        </objectSet> 
+             </unconditionalExclude>
+            </rules>
+        </role>
+    </component>
+  
+	<component type="Documents" context="UserAndSystem">
+		<displayName>All .dbx files</displayName>
+		<role role="Data">
+			<rules>
+				<include>
+					<objectSet>
+						<script>MigXmlHelper.GenerateDrivePatterns ("* [*.dbx]", "Fixed")</script>
+					</objectSet>
+				</include>
+			</rules>
+		</role>
+	</component>
+
+</migration>
